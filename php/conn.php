@@ -1,13 +1,14 @@
 <?php
+include_once '../env.php';
 class Conn {
     protected $conn;
     private $isConnected = false;
 
     public function __construct() {
-        $server = "localhost";
-        $user = "root";
-        $password = "";
-        $database = "finance_control";
+        $server = getenv('DB_SERVER');
+        $user = getenv('DB_USER');
+        $password = getenv('DB_PASSWORD'); 
+        $database = getenv('DB_DATABASE');
         
         $this->conn = new mysqli($server, $user, $password, $database);
 
