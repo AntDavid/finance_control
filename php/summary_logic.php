@@ -3,14 +3,14 @@ include_once 'conn.php';
 
 function getCurrentSalary() {
     $conn = (new Conn())->getConnection();
-    $sql = "SELECT amount FROM salary ORDER BY created_at DESC LIMIT 1"; // Obtém o último salário registrado
+    $sql = "SELECT amount FROM salary ORDER BY created_at DESC LIMIT 1"; 
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
         return $result->fetch_assoc()['amount'];
     }
 
-    return 0; // Retorna 0 se não houver salário definido
+    return 0; 
 }
 
 function getTotalExpenses() {
@@ -22,6 +22,6 @@ function getTotalExpenses() {
         return $result->fetch_assoc()['total_expenses'];
     }
 
-    return 0; // Retorna 0 se não houver despesas registradas
+    return 0; 
 }
 ?>
