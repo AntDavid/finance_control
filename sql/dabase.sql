@@ -39,20 +39,6 @@ CREATE TABLE financial_goals (
 );
 
 
-
-
-
--- Tabela para armazenar o contribuição para as metas--
-CREATE TABLE goal_contributions (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    goal_id INT NOT NULL,
-    contribution_amount DECIMAL(10, 2) NOT NULL,
-    contribution_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (goal_id) REFERENCES financial_goals(id) ON DELETE CASCADE
-);
-
-
-
 -- Tabela para armazenar o salário--
 CREATE TABLE salary (
     id INT AUTO_INCREMENT PRIMARY KEY,
