@@ -31,5 +31,5 @@ Thumbs.db
 *.tmp
 *.swp
 
-
-env_loader.php
+# ignore env file with database credentials
+env.php
