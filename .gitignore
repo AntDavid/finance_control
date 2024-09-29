@@ -15,7 +15,7 @@ Thumbs.db
 
 # Ignore log files and databases
 *.log
-*.sql
+
 *.sqlite
 
 # Ignore PHPUnit test results
@@ -30,7 +30,3 @@ Thumbs.db
 *.bak
 *.tmp
 *.swp
-
-
-
-env_loader.php
