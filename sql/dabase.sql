@@ -29,13 +29,15 @@ CREATE TABLE transactions (
 
 
 -- Tabela para armazenar as metas financeiras--
-CREATE TABLE financial_goals (
+CREATE TABLE financial_goal (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
     goal_name VARCHAR(255) NOT NULL,
     target_amount DECIMAL(10, 2) NOT NULL,
     current_amount DECIMAL(10, 2) DEFAULT 0.00,
     due_date DATE NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_user_financial_goals FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE;
 );
 
 
