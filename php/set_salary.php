@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->close();
     $conn->close();
 
-    header("Location: ../pages/budget_management.php"); // ajuste o caminho conforme necessário
+    header("Location: ../pages/budget_management.php"); 
     exit;
 }
 ?>
