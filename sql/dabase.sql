@@ -54,6 +54,7 @@ CREATE TABLE salary (
 -- Tabela para armazenar as despesas--
 CREATE TABLE expenses (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT Null,
     amount DECIMAL(10, 2) NOT NULL,
     description VARCHAR(255) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
