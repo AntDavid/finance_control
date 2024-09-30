@@ -44,6 +44,7 @@ CREATE TABLE financial_goal (
 -- Tabela para armazenar o salário--
 CREATE TABLE salary (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
     amount DECIMAL(10, 2) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
