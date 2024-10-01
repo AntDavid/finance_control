@@ -1,5 +1,23 @@
 <?php
 include '../php/check_session.php';
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+include_once '../php/summary_logic.php';
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+}
+
+$user_id = $_SESSION['user_id'];  
+
+$current_salary = getCurrentSalary($user_id);
+$total_expenses = getTotalExpenses($user_id);
+$budget_summary = getBudgetSummary($user_id);
+
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -41,9 +59,8 @@ include '../php/check_session.php';
         <h2>Resumo Financeiro</h2>
         <div class="financial-summary">
             <?php
-            include_once '../php/summary_logic.php';
-            $salary = getCurrentSalary();
-            $expenses = getTotalExpenses();
+            $salary = getCurrentSalary($user_id);
+            $expenses = getTotalExpenses($user_id);
 
             echo "<p><strong>Salário Mensal:</strong> R$ " . number_format($salary, 2, ',', '.') . "</p>";
             echo "<p><strong>Total de Despesas:</strong> R$ " . number_format($expenses, 2, ',', '.') . "</p>";
