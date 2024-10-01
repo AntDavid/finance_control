@@ -2,16 +2,27 @@
 include_once '../php/financial_goals_logic.php'; 
 include_once '../php/check_session.php';
 
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+$userId = $_SESSION['user_id']; 
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 $financialGoals = new FinancialGoals();
+$message = '';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['goal_name'])) {
     $goalName = $_POST['goal_name'];
     $targetAmount = $_POST['target_amount'];
     $dueDate = $_POST['due_date'];
-    $financialGoals->insertGoal($goalName, $targetAmount, $dueDate);
+    
+    if ($financialGoals->insertGoal($goalName, $targetAmount, $dueDate, $userId)) { 
+        $message = "Meta financeira inserida com sucesso."; 
+    } else {
+        $message = "Erro ao inserir meta financeira."; 
+    }
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['goal_id']) && isset($_POST['add_amount'])) {
@@ -20,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['goal_id']) && isset($_
     $financialGoals->addMoneyToGoal($goalId, $addAmount);
 }
 
-$goals = $financialGoals->getGoals();
+$goals = $financialGoals->getGoals($userId); 
 ?>
 
 <!DOCTYPE html>
