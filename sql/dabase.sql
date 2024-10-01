@@ -29,15 +29,14 @@ CREATE TABLE transactions (
 
 
 -- Tabela para armazenar as metas financeiras--
-CREATE TABLE financial_goal (
+CREATE TABLE financial_goals (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
     goal_name VARCHAR(255) NOT NULL,
     target_amount DECIMAL(10, 2) NOT NULL,
-    current_amount DECIMAL(10, 2) DEFAULT 0.00,
+    current_amount DECIMAL(10, 2) DEFAULT 0,
     due_date DATE NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT fk_user_financial_goals FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE;
+    user_id INT,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
 
@@ -58,4 +57,16 @@ CREATE TABLE expenses (
     amount DECIMAL(10, 2) NOT NULL,
     description VARCHAR(255) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+-- Tabela para armazenar o orçamento mensal do usuário --
+CREATE TABLE budget (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    income DECIMAL(10, 2) NOT NULL,
+    expense DECIMAL(10, 2) NOT NULL,
+    month VARCHAR(7) NOT NULL, 
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
