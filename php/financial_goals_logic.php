@@ -8,14 +8,24 @@ class FinancialGoals {
         $this->conn = (new Conn())->getConnection();
     }
 
-    public function insertGoal($goalName, $targetAmount, $dueDate) {
-        $stmt = $this->conn->prepare("INSERT INTO financial_goals (goal_name, target_amount, due_date) VALUES (?, ?, ?)");
-        $stmt->bind_param("sds", $goalName, $targetAmount, $dueDate);
-        return $stmt->execute();
+    public function insertGoal($goalName, $targetAmount, $dueDate, $userId) { 
+        $currentAmount = 0; 
+        $stmt = $this->conn->prepare("INSERT INTO financial_goals (goal_name, target_amount, current_amount, due_date, user_id) VALUES (?, ?, ?, ?, ?)"); 
+        $stmt->bind_param("sdssi", $goalName, $targetAmount, $currentAmount, $dueDate, $userId); 
+        
+        if ($stmt->execute()) {
+            return true; 
+        } else {
+            echo "Erro ao inserir meta financeira: " . $stmt->error; 
+            return false;
+        }
     }
 
-    public function getGoals() {
-        $result = $this->conn->query("SELECT * FROM financial_goals");
+    public function getGoals($userId) { 
+        $stmt = $this->conn->prepare("SELECT * FROM financial_goals WHERE user_id = ?"); 
+        $stmt->bind_param("i", $userId);
+        $stmt->execute();
+        $result = $stmt->get_result(); 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
