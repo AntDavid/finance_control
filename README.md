@@ -1,4 +1,4 @@
-Finance Control
+**Finance Control**
 
 Projeto simples em PHP e MySQL para controle financeiro, com foco em organização de código e boas práticas.
 As credenciais do banco de dados são isoladas em um arquivo de ambiente, sem uso de dependências externas.
