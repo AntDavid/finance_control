@@ -1,6 +1,6 @@
 # 💰 Finance Control
 
-> Projeto desenvolvido durante o curso de Programação Web do programa PAIDEIA.
+> Projeto desenvolvido durante o curso de Programação Web do programa PAIDEIA-LASSU da USP.
 
 Um sistema simples e eficiente para controle financeiro, focado na organização do código e na aplicação de boas práticas de desenvolvimento web. O projeto utiliza credenciais de banco de dados isoladas em um arquivo de ambiente, dispensando o uso de dependências externas complexas.
 
@@ -62,7 +62,16 @@ http://localhost/finance_control
 
 * **Nunca versione seu arquivo de credenciais:** Certifique-se de que ele esteja listado no `.gitignore`.
 * **Ambiente de Produção:** Evite utilizar o usuário `root` do MySQL sem senha ao colocar a aplicação online.
-* **Propósito:** Este projeto possui fins primariamente educacionais para a fixação de conceitos de desenvolvimento Web e PHP.
+
+---
+
+## 🎓 Sobre o PAIDEIA-LASSU
+
+Este projeto foi desenvolvido como parte das atividades do curso de Programação Web do programa **PAIDEIA**. 
+
+O PAIDEIA é um programa de capacitação e formação em tecnologia oferecido pelo **LASSU** (Laboratório de Sustentabilidade em TIC) da **USP** (Universidade de São Paulo). O objetivo do curso é preparar profissionais com fundamentos sólidos em programação, aplicando os conhecimentos teóricos em projetos práticos voltados ao mercado de trabalho.
+
+Para saber mais sobre o programa, visite o site oficial: [LASSU-USP PAIDEIA](https://www.lassu.usp.br/paideia/)
 
 ---
 
@@ -70,6 +79,3 @@ http://localhost/finance_control
 
 Projeto de código aberto, livre para uso educacional, estudo e projetos pessoais.
 EOF
-
-# Agora é só copiar tudo, rodar no terminal ou extrair a parte do texto!
-# Tem mais algum repositório que você gostaria de padronizar?
